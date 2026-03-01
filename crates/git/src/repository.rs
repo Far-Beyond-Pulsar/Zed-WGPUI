@@ -1042,7 +1042,7 @@ pub async fn get_git_committer(cx: &AsyncApp) -> GitCommitter {
                     .log_err()
             })
         } else {
-            None
+            Ok(None)
         };
 
     let git = GitBinary::new(

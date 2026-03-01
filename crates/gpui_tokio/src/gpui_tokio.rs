@@ -59,6 +59,7 @@ impl Tokio {
     pub fn spawn<C, Fut, R>(cx: &C, f: Fut) -> Task<Result<R, JoinError>>
     where
         C: AppContext,
+        <C as AppContext>::Result<Task<Result<R, JoinError>>>: std::convert::From<Task<Result<R, JoinError>>>,
         Fut: Future<Output = R> + Send + 'static,
         R: Send + 'static,
     {
@@ -81,6 +82,7 @@ impl Tokio {
     pub fn spawn_result<C, Fut, R>(cx: &C, f: Fut) -> Task<anyhow::Result<R>>
     where
         C: AppContext,
+        <C as AppContext>::Result<Task<anyhow::Result<R>>>: std::convert::From<Task<anyhow::Result<R>>>,
         Fut: Future<Output = anyhow::Result<R>> + Send + 'static,
         R: Send + 'static,
     {

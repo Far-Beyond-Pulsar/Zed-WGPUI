@@ -78,7 +78,7 @@ impl AppSession {
             {
                 let mut current_window_stack = Vec::new();
                 loop {
-                    if let Some(windows) = cx.update(|cx| window_stack(cx))
+                    if let Ok(Some(windows)) = cx.update(|cx| window_stack(cx))
                         && windows != current_window_stack
                     {
                         store_window_stack(&windows).await;

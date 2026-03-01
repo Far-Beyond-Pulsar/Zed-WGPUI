@@ -4,10 +4,10 @@ use cosmic_text::{
     Attrs, AttrsList, Family, Font as CosmicTextFont, FontFeatures as CosmicFontFeatures,
     FontSystem, ShapeBuffer, ShapeLine,
 };
+use gpui::GlyphId;
 use gpui::{
-    Bounds, DevicePixels, Font, FontFeatures, FontId, FontMetrics, FontRun, GlyphId, LineLayout,
-    Pixels, PlatformTextSystem, RenderGlyphParams, SUBPIXEL_VARIANTS_X, SUBPIXEL_VARIANTS_Y,
-    ShapedGlyph, ShapedRun, SharedString, Size, TextRenderingMode, point, size,
+    Bounds, DevicePixels, Font, FontFeatures, FontId, FontMetrics, FontRun, LineLayout,
+    Pixels, ShapedGlyph, ShapedRun, SharedString, Size, point, size,
 };
 
 use itertools::Itertools;
@@ -215,7 +215,7 @@ impl CosmicTextSystemState {
         name: &str,
         features: &FontFeatures,
     ) -> Result<SmallVec<[FontId; 4]>> {
-        let name = gpui::font_name_with_fallbacks(name, &self.system_font_fallback);
+        let name = name;
 
         let families = self
             .font_system
@@ -270,7 +270,7 @@ impl CosmicTextSystemState {
         if glyph_id == 0 {
             None
         } else {
-            Some(GlyphId(glyph_id.into()))
+            Some(glyph_id.into()) // Use a public conversion or refactor as needed
         }
     }
 
@@ -482,7 +482,7 @@ impl CosmicTextSystemState {
             }
 
             let shaped_glyph = ShapedGlyph {
-                id: GlyphId(glyph.glyph_id as u32),
+                id: glyph.glyph_id as u32,
                 position: point(glyph.x.into(), glyph.y.into()),
                 index: glyph.start,
                 is_emoji,
