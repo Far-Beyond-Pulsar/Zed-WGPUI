@@ -85,7 +85,6 @@ members = [
     "crates/git_ui",
     "crates/go_to_line",
     "crates/google_ai",
-    "crates/gpui",
     "crates/gpui_linux",
     "crates/gpui_macos",
     "crates/gpui_macros",
@@ -329,7 +328,7 @@ git_hosting_providers = { path = "crates/git_hosting_providers" }
 git_ui = { path = "crates/git_ui" }
 go_to_line = { path = "crates/go_to_line" }
 google_ai = { path = "crates/google_ai" }
-gpui = { path = "crates/gpui", default-features = false }
+gpui = { git = "https://github.com/Far-Beyond-Pulsar/WGPUI" }
 gpui_linux = { path = "crates/gpui_linux", default-features = false }
 gpui_macos = { path = "crates/gpui_macos", default-features = false }
 gpui_macros = { path = "crates/gpui_macros" }
@@ -596,7 +595,7 @@ nbformat = "1.1.0"
 nix = "0.29"
 num-format = "0.4.4"
 objc = "0.2"
-objc2-foundation = { version = "=0.3.1", default-features = false, features = [
+objc2-foundation = { version = "=0.3.2", default-features = false, features = [
     "NSArray",
     "NSAttributedString",
     "NSBundle",
@@ -772,7 +771,7 @@ wax = "0.7"
 which = "6.0.0"
 wasm-bindgen = "0.2.113"
 web-time = "1.1.0"
-wgpu = "28.0"
+wgpu = { git = "https://github.com/Far-Beyond-Pulsar/wgpu", rev = "fce5b80e8017304449124b12637ec324417e40c8" }
 windows-core = "0.61"
 yawc = "0.2.5"
 zeroize = "1.8"
